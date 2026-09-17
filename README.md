@@ -1,5 +1,5 @@
 #  Minijuego: Batalla contra el Warden en la Ciudad Antigua
-**Proyecto Final 2026 - Grupo 07 (2026pio2tg07) | San Francisco Salesiano (Pío IX)**
+**Proyecto Final 2026 - Grupo 07 (2026pio2tg07) | Casa Salesiana Pío IX**
 
 > Una experiencia interactiva e inmersiva que recrea una "Ancient City" de Minecraft mediante Arduino. Sobreviví y derrotá al Warden en este juego electrónico por turnos.
 
