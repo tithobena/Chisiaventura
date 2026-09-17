@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor 3D Arduino Uno - Movimiento en 8</title>
+  
+  <!-- Carga la librería oficial <model-viewer> de Google -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  
+  <!-- Estilos para encuadre responsivo -->
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: transparent;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Contenedor principal adaptativo a Google Sites */
+    .viewport-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Visor 3D */
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      background-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-container">
+    
+    <!-- 
+      Para cambiar la orientación modifica el atributo orientation="Xdeg Ydeg Zdeg":
+      - Eje X (Inclinación): 90deg 0deg 0deg
+      - Eje Y (Giro brújula): 0deg 90deg 0deg
+      - Eje Z (Ladeo lateral): 0deg 0deg 90deg
+    -->
+    <model-viewer 
+      id="arduinoViewer"
+      src="https://cdn.jsdelivr.net/gh/tithobena/Proyecto-Final-2026@main/arduino_uno(1).glb" 
+      orientation="0deg 60deg 90deg"
+      camera-orbit="45deg 56deg auto"
+      camera-target="auto auto auto"
+      bounds="tight"
+      shadow-intensity="1.2"
+      shadow-softness="0.8"
+      disable-zoom
+      interaction-prompt="none">
+    </model-viewer>
+
+  </div>
+
+  <script>
+    // Referencia al visor 3D
+    const viewer = document.getElementById('arduinoViewer');
+
+    // Parámetros fijos de animación
+    let config = {
+      baseYaw: 45,        // Ángulo horizontal de perspectiva isométrica
+      basePitch: 56,      // Elevación Base fija: 56°
+      ampYaw: 5,          // Amplitud Horizontal fija: 5°
+      ampPitch: 5,        // Amplitud Vertical fija: 5°
+      speed: 0.3,         // Velocidad fija: 0.3x
+      radius: 'auto'      // Distancia de cámara adaptativa
+    };
+
+    let animationTime = 0;
+    let lastTimestamp = null;
+
+    /**
+     * Bucle de animación continuo con trayectoria en 8 suave
+     */
+    function animateFigureEight(timestamp) {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const deltaTime = (timestamp - lastTimestamp) / 1000;
+      lastTimestamp = timestamp;
+
+      // Avanzar el tiempo según la velocidad fija (0.3x)
+      animationTime += deltaTime * config.speed * 1.2;
+
+      // Cálculo matemático del movimiento en 8 (Curva de Lissajous)
+      const currentYaw = config.baseYaw + config.ampYaw * Math.sin(animationTime);
+      const currentPitch = config.basePitch + (config.ampPitch * Math.sin(2 * animationTime)) / 2;
+
+      // Aplicar el nuevo ángulo a la cámara
+      viewer.cameraOrbit = `${currentYaw.toFixed(2)}deg ${currentPitch.toFixed(2)}deg ${config.radius}`;
+
+      requestAnimationFrame(animateFigureEight);
+    }
+
+    // Iniciar la animación al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(animateFigureEight);
+    });
+  </script>
+</body>
+</html>
