@@ -7,7 +7,7 @@
  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝      ╚═════╝    ╚═╝      ╚═╝     ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝                                                    
                                                                  Codigo Esclavo V1.1 Para A.NANO*/
 //=======================================
-//  I/O (Input/Output)
+//  I/O Con pantalla y botones
 //=======================================
 bool BtnActpre; //Valor booleano que indica si el boton esta presionado o no
 int pepe = -1; //numero de la hotbar
@@ -24,8 +24,8 @@ int cantidadDeLanas = 3;
 int vidaDelMalditoYHorribleWarden = 200;
 int Sucri = 20; //es la vida por si revisan este codigo, gord@s
 
-bool DiplaSelct(int eseeseldisplayqueestaseleccionado) {//<-- hermanochi creo que ese explica solo
-  return pepe == eseeseldisplayqueestaseleccionado + 1? true : false;
+bool DiplaSelct(int e) {//<-- vro es sans ahora
+  return pepe == e + 1? true : false;
 }
 
 
@@ -36,7 +36,7 @@ void setup() {
 }
 
 void loop() {
-  BtnACT = digitalRead(12) == HIGH; 
+  BtnACT = digitalRead(12); 
   if (Serial.available() > 0)  {
     pepe = Serial.read();
     Serial.println(String("granpepe") + pepe);
@@ -54,7 +54,6 @@ void loop() {
     //Arco
     if (DiplaSelct(2) && BtnACT)    {
       vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
-      
       accionesDisp--;
       Serial.println("W" + vidaDelMalditoYHorribleWarden);
       //use la misma mrd xd
@@ -64,7 +63,6 @@ void loop() {
     if (DiplaSelct(3) && BtnACT)    {
       Sucri += 3;
       accionesDisp--;
-      //Cereal = "";
       Serial.println(String("Vida:") + Sucri);
     }
 
