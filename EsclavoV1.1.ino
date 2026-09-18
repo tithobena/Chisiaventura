@@ -7,7 +7,8 @@
  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝      ╚═════╝    ╚═╝      ╚═╝     ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝                                                    
                                                                  Codigo Esclavo V1.1 Para A.NANO*/
 
-bool BtnACT; //Valor booleano que indica si el boton esta presionado o no
+bool BtnActpre; //Valor booleano que indica si el boton esta presionado o no
+bool BtnACT = !BtnActpre; //la inversa, esta mas rico que "jamon()"
 unsigned long manuelito; //es el del tiempo esmuy util
 int accionesDisponibleHermano = 1;
 bool empiezalobueno = true;
