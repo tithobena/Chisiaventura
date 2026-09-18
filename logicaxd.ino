@@ -1,4 +1,3 @@
-#include <Arduino.h>
 //hola chisitos son
 
 //La espada va al display 1
@@ -12,7 +11,6 @@ unsigned long manuelito;
 int accionesDisponibleHermano = 1;
 bool empiezalobueno = true;
 int vidaDelMalditoYHorribleWarden = 200;
-int cantLanas = 5;
 int Sucri = 20; //es la vida por si revisan este codigo, gorda
 bool DiplaSelct(int eseeseldisplayqueestaseleccionado)//<-- hermanochi creo que ese explica solo
 {
@@ -42,12 +40,14 @@ void loop()
     vidaDelMalditoYHorribleWarden -= 25;
     accionesDisponibleHermano--;
     Cereal = "";
+    Serial.println(String("Vidawalde:") + vidaDelMalditoYHorribleWarden);
   }
   if (DiplaSelct(2) || Cereal == "arcu")
   {
     vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
     Cereal = "";
     accionesDisponibleHermano--;
+    Serial.println(vidaDelMalditoYHorribleWarden);
     //use la misma mrd xd
   }
   if (DiplaSelct(3) || Cereal == "cereal")
@@ -55,19 +55,13 @@ void loop()
     Sucri += 3;
     accionesDisponibleHermano--;
     Cereal = "";
+    Serial.println(String("Vida:") + Sucri);
   }
   if (DiplaSelct(4) || Cereal == "meee")
   {
-    if (cantLanas > 0)
-    {
-      cantLanas--;
-      accionesDisponibleHermano = 2;
-      Cereal = "";
-    }else
-    {
-      Serial.println("boludo no tenes lana");
-      Cereal = "";
-    }
+    accionesDisponibleHermano = 2;
+    Cereal = "";
+    Serial.println("asione:" + String(accionesDisponibleHermano));
   }
 }else
   {
@@ -75,6 +69,7 @@ void loop()
     {
     empiezalobueno = false;
     Sucri -= QuickEventJuanitoTech()? 0 : 6; //re tryhard xddddd
+    Serial.println(String("Vida:") + Sucri);
     accionesDisponibleHermano = 1;
     empiezalobueno = true;
     }
@@ -83,10 +78,9 @@ void loop()
 
 bool QuickEventJuanitoTech()
 {
-  delay(100);
+  delay(00);
   manuelito = millis();
   unsigned long ttts = millis();
-  manuelito = map(manuelito, 0, 1000, 0, 400) / 2;
   float granChisitos = random(150, 250);
   int jaimito = -1;
   Cereal = "";
@@ -99,10 +93,11 @@ bool QuickEventJuanitoTech()
     Cereal.trim();
   }
   //sacalo hasta aca
-  manuelito2 = map(manuelito2, 0, 1000, 0, 400) / 2;
-  if (digitalRead(13) || Cereal == "0")
+  manuelito2 = map(manuelito2, 0, 1000, 0, 400) / 4;
+  Serial.println(String(manuelito2) + "<->" + String(granChisitos));
+  if (digitalRead(13) == HIGH || Cereal == "0")
   {
-    if (manuelito2 > granChisitos - 15 && manuelito2 < granChisitos + 15)
+    if (manuelito2 > granChisitos - 25 && manuelito2 < granChisitos + 25)
     {
       jaimito = 1; 
     }else{
