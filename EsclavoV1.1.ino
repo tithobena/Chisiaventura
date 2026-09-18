@@ -7,7 +7,20 @@
 //El Escudo va al display 5
 
 //String Cereal = "";
-bool manuel; //este el del boton sabes xddd, si esta presionao
+bool Jamon = true; //variable muy pero mu importante para el boton no las saques
+bool manuel() //este el del boton sabes xddd, si esta presionao
+{
+  if (digitalRead(12) == HIGH){
+  if (Jamon)
+    {
+      Jamon = false;
+      return true;
+    }
+      return false;
+  }
+  Jamon = true;
+  return false;
+}
 unsigned long manuelito; //es el del tiempo esmuy util
 int accionesDisponibleHermano = 1;
 bool empiezalobueno = true;
@@ -22,13 +35,11 @@ bool DiplaSelct(int eseeseldisplayqueestaseleccionado)//<-- hermanochi creo que 
 void setup()
 {
   Serial.begin(9600);
-  manuelito = millis();
   pinMode(12, INPUT);
 }
 
 void loop() 
 {
-  manuel = digitalRead(12) == HIGH; //es el boton sabes, si esta presionao
   //saca esta basura
   if (Serial.available() > 0)
   {
@@ -39,14 +50,14 @@ void loop()
   //hasta aca :V
   if (accionesDisponibleHermano != 0)
 {
-  if (DiplaSelct(1) && manuel)
+  if (DiplaSelct(1) && manuel())
   {
     vidaDelMalditoYHorribleWarden -= 25;
     accionesDisponibleHermano--;
     //Cereal = "";
     Serial.println(String("W") + vidaDelMalditoYHorribleWarden);
   }
-  if (DiplaSelct(2) && manuel)
+  if (DiplaSelct(2) && manuel())
   {
     vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
     //Cereal = "";
@@ -54,14 +65,14 @@ void loop()
     Serial.println("W" + vidaDelMalditoYHorribleWarden);
     //use la misma mrd xd
   }
-  if (DiplaSelct(3) && manuel)
+  if (DiplaSelct(3) && manuel())
   {
     Sucri += 3;
     accionesDisponibleHermano--;
     //Cereal = "";
     Serial.println(String("Vida:") + Sucri);
   }
-  if (DiplaSelct(4) && manuel)
+  if (DiplaSelct(4) && manuel())
   {
     if (cantidadDeLanas > 0){
     accionesDisponibleHermano = 2;
@@ -90,8 +101,7 @@ void loop()
 
 bool QuickEventJuanitoTech()
 {
-  delay(500);
-  manuelito = millis();
+  delay(1000);
   unsigned long ttts = millis();
   float granChisitos = random(150, 250);
   int jaimito = -1;
@@ -100,7 +110,7 @@ bool QuickEventJuanitoTech()
   unsigned long manuelito2 = millis() - ttts;
   manuelito2 = map(manuelito2, 0, 1000, 0, 400) / 4;
   Serial.println(String(manuelito2) + "<->" + String(granChisitos));
-  if (manuel)
+  if (manuel())
   {
     if (manuelito2 > granChisitos - 25 && manuelito2 < granChisitos + 25)
     {
