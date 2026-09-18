@@ -91,7 +91,7 @@ bool QuickEventJuanitoTech()
   }
   //sacalo hasta aca
   manuelito2 = map(manuelito2, 0, 1000, 0, 400) / 2;
-  if ((digitalRead(13) == LOW && DiplaSelct(5)) || Cereal == "0")
+  if (digitalRead(13) || Cereal == "0")
   {
     if (manuelito2 > granChisitos - 15 && manuelito2 < granChisitos + 15)
     {
