@@ -23,7 +23,6 @@ bool DiplaSelct(int eseeseldisplayqueestaseleccionado) {//<-- hermanochi creo qu
 
 void setup() {
   Serial.begin(9600);
-  manuelito = millis();
   pinMode(12, INPUT);
 }
 
@@ -86,8 +85,7 @@ void loop() {
 
 bool QuickEventJuanitoTech()
 {
-  delay(500);
-  manuelito = millis();
+  delay(1000);
   unsigned long ttts = millis();
   float granChisitos = random(150, 250);
   int jaimito = -1;
