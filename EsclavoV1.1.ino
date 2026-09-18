@@ -9,16 +9,21 @@
 //=======================================
 //  I/O (Input/Output)
 //=======================================
-
 bool BtnActpre; //Valor booleano que indica si el boton esta presionado o no
 int pepe = -1; //numero de la hotbar
 bool BtnACT = !BtnActpre; //la inversa usando !, esta mas rico que "jamon()"
-
+//=======================================
+//  Variables de juego
+//=======================================
 int accionesDisp = 1; //Cantidad de acciones disponibles (o turnos) por ronda
 bool empiezalobueno = true; //
+//=======================================
+//  Variables de vida y recursos
+//=======================================
 int cantidadDeLanas = 3;
 int vidaDelMalditoYHorribleWarden = 200;
 int Sucri = 20; //es la vida por si revisan este codigo, gord@s
+
 bool DiplaSelct(int eseeseldisplayqueestaseleccionado) {//<-- hermanochi creo que ese explica solo
   return pepe == eseeseldisplayqueestaseleccionado + 1? true : false;
 }
