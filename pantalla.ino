@@ -1,3 +1,12 @@
+/*
+ ██████╗ ██████╗ ██╗   ██╗██████╗  ██████╗      ██████╗ ███████╗    ██████╗ ██╗ ██████╗ ██╗██╗  ██╗
+██╔════╝ ██╔══██╗██║   ██║██╔══██╗██╔═══██╗    ██╔═████╗╚════██║    ██╔══██╗██║██╔═══██╗██║╚██╗██╔╝
+██║  ███╗██████╔╝██║   ██║██████╔╝██║   ██║    ██║██╔██║    ██╔╝    ██████╔╝██║██║   ██║██║ ╚███╔╝ 
+██║   ██║██╔══██╗██║   ██║██╔═══╝ ██║   ██║    ████╔╝██║   ██╔╝     ██╔═══╝ ██║██║   ██║██║ ██╔██╗ 
+╚██████╔╝██║  ██║╚██████╔╝██║     ╚██████╔╝    ╚██████╔╝   ██║      ██║     ██║╚██████╔╝██║██╔╝ ██╗
+ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝      ╚═════╝    ╚═╝      ╚═╝     ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝                                                    
+                                                                 Codigo Pantalla V1.1 Para A.UNO*/
+                                                  
 #include <Adafruit_GFX.h>
 #include <MCUFRIEND_kbv.h>
 #include <TouchScreen.h>
@@ -35,7 +44,7 @@ const int Pxi = (480 - Anchbarra) / 2; //Posicion x inicial (poreso P.X I.)
 const int Pyi = 320 - tamanoCasilla - 20; //lo mismo xd
 
 //Esta variable guarda que casilla esta seleccionada actualmente
-long casillaActual = 0; 
+int casillaActual = 0; 
 
 void setup() {
   //Iniciamos la comunicacion con el otro Arduino a 9600 de velocidad (como si fuera a la pc, pero en cambio al otro arduino)

@@ -1,13 +1,13 @@
-//hola chisitos son
+/*
+ ██████╗ ██████╗ ██╗   ██╗██████╗  ██████╗      ██████╗ ███████╗    ██████╗ ██╗ ██████╗ ██╗██╗  ██╗
+██╔════╝ ██╔══██╗██║   ██║██╔══██╗██╔═══██╗    ██╔═████╗╚════██║    ██╔══██╗██║██╔═══██╗██║╚██╗██╔╝
+██║  ███╗██████╔╝██║   ██║██████╔╝██║   ██║    ██║██╔██║    ██╔╝    ██████╔╝██║██║   ██║██║ ╚███╔╝ 
+██║   ██║██╔══██╗██║   ██║██╔═══╝ ██║   ██║    ████╔╝██║   ██╔╝     ██╔═══╝ ██║██║   ██║██║ ██╔██╗ 
+╚██████╔╝██║  ██║╚██████╔╝██║     ╚██████╔╝    ╚██████╔╝   ██║      ██║     ██║╚██████╔╝██║██╔╝ ██╗
+ ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝      ╚═════╝    ╚═╝      ╚═╝     ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝                                                    
+                                                                 Codigo Esclavo V1.1 Para A.NANO*/
 
-//La espada va al display 1
-//Arco va al display 2
-//El bife de chirizo va al display 3
-//La Lana va al display 4
-//El Escudo va al display 5
-
-//String Cereal = "";
-bool manuel; //este el del boton sabes xddd, si esta presionao
+bool BtnACT; //Valor booleano que indica si el boton esta presionado o no
 unsigned long manuelito; //es el del tiempo esmuy util
 int accionesDisponibleHermano = 1;
 bool empiezalobueno = true;
@@ -15,67 +15,63 @@ int cantidadDeLanas = 3;
 int pepe = -1;
 int vidaDelMalditoYHorribleWarden = 200;
 int Sucri = 20; //es la vida por si revisan este codigo, gord@s
-bool DiplaSelct(int eseeseldisplayqueestaseleccionado)//<-- hermanochi creo que ese explica solo
-{
+bool DiplaSelct(int eseeseldisplayqueestaseleccionado) {//<-- hermanochi creo que ese explica solo
   return pepe == eseeseldisplayqueestaseleccionado + 1? true : false;
 }
-void setup()
-{
+
+
+
+void setup() {
   Serial.begin(9600);
   manuelito = millis();
   pinMode(12, INPUT);
 }
 
-void loop() 
-{
-  manuel = digitalRead(12) == HIGH; //es el boton sabes, si esta presionao
-  //saca esta basura
-  if (Serial.available() > 0)
-  {
-    
+void loop() {
+  BtnACT = digitalRead(12) == HIGH; 
+  if (Serial.available() > 0)  {
     pepe = Serial.read();
     Serial.println(String("granpepe") + pepe);
   }
-  //hasta aca :V
-  if (accionesDisponibleHermano != 0)
-{
-  if (DiplaSelct(1) && manuel)
-  {
-    vidaDelMalditoYHorribleWarden -= 25;
-    accionesDisponibleHermano--;
-    //Cereal = "";
-    Serial.println(String("W") + vidaDelMalditoYHorribleWarden);
-  }
-  if (DiplaSelct(2) && manuel)
-  {
-    vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
-    //Cereal = "";
-    accionesDisponibleHermano--;
-    Serial.println("W" + vidaDelMalditoYHorribleWarden);
-    //use la misma mrd xd
-  }
-  if (DiplaSelct(3) && manuel)
-  {
-    Sucri += 3;
-    accionesDisponibleHermano--;
-    //Cereal = "";
-    Serial.println(String("Vida:") + Sucri);
-  }
-  if (DiplaSelct(4) && manuel)
-  {
-    if (cantidadDeLanas > 0){
-    accionesDisponibleHermano = 2;
-    cantidadDeLanas--;
-    //Cereal = "";
-    Serial.println("AC:" + String(accionesDisponibleHermano));
-    }else
-    {
-      Serial.println("nlana");
-      //Cereal = "";
+  if (accionesDisponibleHermano != 0) {
+
+    //Espada
+    if (DiplaSelct(1) && BtnACT)    {
+      vidaDelMalditoYHorribleWarden -= 25;
+      accionesDisponibleHermano--;
+      
+      Serial.println(String("W") + vidaDelMalditoYHorribleWarden);
     }
-  }
-}else 
-{
+
+    //Arco
+    if (DiplaSelct(2) && BtnACT)    {
+      vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
+      
+      accionesDisponibleHermano--;
+      Serial.println("W" + vidaDelMalditoYHorribleWarden);
+      //use la misma mrd xd
+    }
+
+    //Bife
+    if (DiplaSelct(3) && BtnACT)    {
+      Sucri += 3;
+      accionesDisponibleHermano--;
+      //Cereal = "";
+      Serial.println(String("Vida:") + Sucri);
+    }
+
+    //Lana
+    if (DiplaSelct(4) && BtnACT)
+    {
+      if (cantidadDeLanas > 0) {
+      accionesDisponibleHermano = 2;
+      cantidadDeLanas--;
+      Serial.println("AC:" + String(accionesDisponibleHermano));
+      }else {
+        Serial.println("nlana");
+      }
+    }
+}else {
     if (empiezalobueno)
     {
     empiezalobueno = false;
@@ -100,7 +96,7 @@ bool QuickEventJuanitoTech()
   unsigned long manuelito2 = millis() - ttts;
   manuelito2 = map(manuelito2, 0, 1000, 0, 400) / 4;
   Serial.println(String(manuelito2) + "<->" + String(granChisitos));
-  if (manuel)
+  if (BtnACT)
   {
     if (manuelito2 > granChisitos - 25 && manuelito2 < granChisitos + 25)
     {
