@@ -1,4 +1,4 @@
-//hola chisitos son
+s//hola chisitos son
 
 //La espada va al display 1
 //Arco va al display 2
@@ -59,7 +59,7 @@ void loop()
     Sucri += 3;
     accionesDisponibleHermano--;
     //Cereal = "";
-    Serial.println(String("V") + Sucri);
+    Serial.println(String("Vida:") + Sucri);
   }
   if (DiplaSelct(4) && manuel)
   {

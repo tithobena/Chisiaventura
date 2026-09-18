@@ -57,19 +57,19 @@ void setup() {
 }
 
 void loop() {
-String info = String(Serial.read());
-if (info[0] == "W"){
- pantalla.setCursor(200,50);
- info.remove(0, 1);
- pantalla.print(info);
-}if (info[0] == "V"){
- pantalla.setCursor(200,50);
- info.remove(0, 1);
- pantalla.print(info);
-}
+  String info = String(Serial.read());
+  if (info.length() > 0 && info[0] == 'W') {
+    pantalla.setCursor(200, 50);
+    info.remove(0, 1);
+    pantalla.print(info);
+  }
+  if (info.length() > 0 && info[0] == 'V') {
+    pantalla.setCursor(200, 50);
+    info.remove(0, 1);
+    pantalla.print(info);
+  }
 
-
-/*codigo del boton*/
+  /*codigo del boton*/
 
   //se fija si me tocan
   TSPoint toque = tactil.getPoint();
