@@ -12,6 +12,7 @@ unsigned long manuelito;
 int accionesDisponibleHermano = 1;
 bool empiezalobueno = true;
 int vidaDelMalditoYHorribleWarden = 200;
+int cantLanas = 5;
 int Sucri = 20; //es la vida por si revisan este codigo, gorda
 bool DiplaSelct(int eseeseldisplayqueestaseleccionado)//<-- hermanochi creo que ese explica solo
 {
@@ -57,8 +58,16 @@ void loop()
   }
   if (DiplaSelct(4) || Cereal == "meee")
   {
-    accionesDisponibleHermano = 2;
-    Cereal = "";
+    if (cantLanas > 0)
+    {
+      cantLanas--;
+      accionesDisponibleHermano = 2;
+      Cereal = "";
+    }else
+    {
+      Serial.println("boludo no tenes lana");
+      Cereal = "";
+    }
   }
 }else
   {
