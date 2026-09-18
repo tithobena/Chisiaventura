@@ -6,14 +6,17 @@
 ╚██████╔╝██║  ██║╚██████╔╝██║     ╚██████╔╝    ╚██████╔╝   ██║      ██║     ██║╚██████╔╝██║██╔╝ ██╗
  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝      ╚═════╝    ╚═╝      ╚═╝     ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝                                                    
                                                                  Codigo Esclavo V1.1 Para A.NANO*/
+//=======================================
+//  I/O (Input/Output)
+//=======================================
 
 bool BtnActpre; //Valor booleano que indica si el boton esta presionado o no
-bool BtnACT = !BtnActpre; //la inversa, esta mas rico que "jamon()"
-unsigned long manuelito; //es el del tiempo esmuy util
-int accionesDisponibleHermano = 1;
-bool empiezalobueno = true;
+int pepe = -1; //numero de la hotbar
+bool BtnACT = !BtnActpre; //la inversa usando !, esta mas rico que "jamon()"
+
+int accionesDisp = 1; //Cantidad de acciones disponibles (o turnos) por ronda
+bool empiezalobueno = true; //
 int cantidadDeLanas = 3;
-int pepe = -1;
 int vidaDelMalditoYHorribleWarden = 200;
 int Sucri = 20; //es la vida por si revisan este codigo, gord@s
 bool DiplaSelct(int eseeseldisplayqueestaseleccionado) {//<-- hermanochi creo que ese explica solo
@@ -33,12 +36,12 @@ void loop() {
     pepe = Serial.read();
     Serial.println(String("granpepe") + pepe);
   }
-  if (accionesDisponibleHermano != 0) {
+  if (accionesDisp != 0) {
 
     //Espada
     if (DiplaSelct(1) && BtnACT)    {
       vidaDelMalditoYHorribleWarden -= 25;
-      accionesDisponibleHermano--;
+      accionesDisp--;
       
       Serial.println(String("W") + vidaDelMalditoYHorribleWarden);
     }
@@ -47,7 +50,7 @@ void loop() {
     if (DiplaSelct(2) && BtnACT)    {
       vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
       
-      accionesDisponibleHermano--;
+      accionesDisp--;
       Serial.println("W" + vidaDelMalditoYHorribleWarden);
       //use la misma mrd xd
     }
@@ -55,7 +58,7 @@ void loop() {
     //Bife
     if (DiplaSelct(3) && BtnACT)    {
       Sucri += 3;
-      accionesDisponibleHermano--;
+      accionesDisp--;
       //Cereal = "";
       Serial.println(String("Vida:") + Sucri);
     }
@@ -64,9 +67,9 @@ void loop() {
     if (DiplaSelct(4) && BtnACT)
     {
       if (cantidadDeLanas > 0) {
-      accionesDisponibleHermano = 2;
+      accionesDisp = 2;
       cantidadDeLanas--;
-      Serial.println("AC:" + String(accionesDisponibleHermano));
+      Serial.println("AC:" + String(accionesDisp));
       }else {
         Serial.println("nlana");
       }
@@ -77,7 +80,7 @@ void loop() {
     empiezalobueno = false;
     Sucri -= QuickEventJuanitoTech()? 0 : 6; //re tryhard xddddd
     Serial.println(String("Vida: ") + Sucri);
-    accionesDisponibleHermano = 1;
+    accionesDisp = 1;
     empiezalobueno = true;
     }
   }

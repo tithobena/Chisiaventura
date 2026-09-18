@@ -8,7 +8,7 @@
 
 String Cereal = "";
 unsigned long manuelito;
-int accionesDisponibleHermano = 1;
+int accionesDisp = 1;
 bool empiezalobueno = true;
 int vidaDelMalditoYHorribleWarden = 200;
 int Sucri = 20; //es la vida por si revisan este codigo, gorda
@@ -33,12 +33,12 @@ void loop()
     Cereal.trim();
   }
   //hasta aca :V
-  if (accionesDisponibleHermano != 0)
+  if (accionesDisp != 0)
 {
   if (DiplaSelct(1) || Cereal == "espada")
   {
     vidaDelMalditoYHorribleWarden -= 25;
-    accionesDisponibleHermano--;
+    accionesDisp--;
     Cereal = "";
     Serial.println(String("Vidawalde:") + vidaDelMalditoYHorribleWarden);
   }
@@ -46,22 +46,22 @@ void loop()
   {
     vidaDelMalditoYHorribleWarden -= QuickEventJuanitoTech()? 50 : 0;
     Cereal = "";
-    accionesDisponibleHermano--;
+    accionesDisp--;
     Serial.println(vidaDelMalditoYHorribleWarden);
     //use la misma mrd xd
   }
   if (DiplaSelct(3) || Cereal == "cereal")
   {
     Sucri += 3;
-    accionesDisponibleHermano--;
+    accionesDisp--;
     Cereal = "";
     Serial.println(String("Vida:") + Sucri);
   }
   if (DiplaSelct(4) || Cereal == "meee")
   {
-    accionesDisponibleHermano = 2;
+    accionesDisp = 2;
     Cereal = "";
-    Serial.println("asione:" + String(accionesDisponibleHermano));
+    Serial.println("asione:" + String(accionesDisp));
   }
 }else
   {
@@ -70,7 +70,7 @@ void loop()
     empiezalobueno = false;
     Sucri -= QuickEventJuanitoTech()? 0 : 6; //re tryhard xddddd
     Serial.println(String("Vida:") + Sucri);
-    accionesDisponibleHermano = 1;
+    accionesDisp = 1;
     empiezalobueno = true;
     }
   }
