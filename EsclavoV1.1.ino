@@ -1,4 +1,4 @@
-s//hola chisitos son
+//hola chisitos son
 
 //La espada va al display 1
 //Arco va al display 2

@@ -1,0 +1,16 @@
+#Archivos y carpetas temporales de Arduino IDE
+.build/
+build/
+*.hex
+*.elf
+*.bin
+
+#Configuración y entornos de PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.clangd/
+
+#Archivos de caché del preprocesador
+*.o
+*.d
