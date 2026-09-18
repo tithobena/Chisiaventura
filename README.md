@@ -11,13 +11,14 @@ El proyecto consiste en una maqueta interactiva que simula las imponentes estruc
 
 Mediante el uso de luces LED, sonido y sensores, la maqueta brinda una experiencia envolvente. Además, el diseño del circuito integra una placa Arduino, llaves, módulos y programación que cumplen con los requisitos obligatorios de Taller.
 
-## ⚔️ Mecánicas del Juego
+##  Mecánicas del Juego
 
-El combate es táctico y por turnos. El jugador dispone de **1 acción por turno** y tiene 3 opciones en su inventario para intentar vencer al Warden:
+El combate es táctico y por turnos. El jugador dispone de **1 acción por turno** y tiene 4 opciones en su inventario para intentar vencer al Warden:
 
-1.  **Espada:** Quita un 20% de la vida del Warden, pero el esfuerzo hace que el jugador pierda **2 corazones** de su propia vida.
-2.  **Carne:** Restaura **1.5 corazones** de la vida del jugador.
-3.  **Lanas (x3 usos en total):** Permite amortiguar el sonido. Saltea el turno del Warden y le otorga al jugador **2 acciones** consecutivas.
+1.  **Espada:** Quita un 10% de la vida del Warden.
+2.  **ARCO** Quita en 20/% requiere precisión. 
+3.  **Carne:** Restaura **1.5 corazones** de la vida del jugador.
+4.  **Lanas (x3 usos en total):** Permite amortiguar el sonido. le otorga al jugador **2 acciones** consecutivas.
 
 ##  Tecnologías y Componentes
 
