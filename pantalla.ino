@@ -28,6 +28,13 @@ TouchScreen tactil = TouchScreen(XP, YP, XM, YM, 300);
 #define COLOR_SOMBRA      0x2104 
 #define COLOR_SELECCION   0xFFFF 
 
+//dibujitos de la hotbar
+LV_IMG_DECLARE(minecraft_bow);
+LV_IMG_DECLARE(minecraft_cooked_beef);
+LV_IMG_DECLARE(minecraft_diamond_sword);
+LV_IMG_DECLARE(minecraft_shield);
+LV_IMG_DECLARE(minecraft_white_wool);
+
 //Variables para organizar las casillas (la barra de abajo)
 const int Cntcudritos = 9;     //cuantos cuadraditos pongo
 const int tamanoCasilla = 50;
@@ -65,6 +72,9 @@ void setup() {
     bool estaSeleccionada = (i == casillaActual);
     dibujarCasilla(i, estaSeleccionada);
   }
+  lv_obj_t * img_espada = lv_img_create(lv_scr_act());
+  lv_img_set_src(img_espada, &minecraft_diamond_sword);
+  lv_img_set_zoom(img_espada, 1024);
 }
 
 void loop() {
