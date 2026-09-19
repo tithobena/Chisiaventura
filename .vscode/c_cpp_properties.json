@@ -12,7 +12,6 @@
                 "/home/tithobena/.arduino15/packages/arduino/hardware/avr/1.8.8/libraries/SPI/src",
                 "/home/tithobena/Arduino/libraries/MCUFRIEND_kbv",
                 "/home/tithobena/Arduino/libraries/Adafruit_TouchScreen",
-                "/home/tithobena/Arduino/libraries/MCUFRIEND_kbv/utility",
                 "/home/tithobena/.arduino15/packages/arduino/tools/avr-gcc/7.3.0-atmel3.6.1-arduino7/avr/include"
             ],
             "forcedInclude": [

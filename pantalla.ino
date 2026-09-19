@@ -6,10 +6,12 @@
 ╚██████╔╝██║  ██║╚██████╔╝██║     ╚██████╔╝    ╚██████╔╝   ██║      ██║     ██║╚██████╔╝██║██╔╝ ██╗
  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝      ╚═════╝    ╚═╝      ╚═╝     ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝                                                    
                                                                  Codigo Pantalla V1.1 Para A.UNO*/
-                                                  
+                  
+#include <Arduino.h>
 #include <Adafruit_GFX.h>
 #include <MCUFRIEND_kbv.h>
 #include <TouchScreen.h>
+#include <lvlg.h>
 
 //Pongo el nombre "pantalla" a la pantalla y "tactil" al sensor de toques
 MCUFRIEND_kbv pantalla; 
@@ -135,9 +137,12 @@ void loop() {
   }
 }
 
+//================================
+// GRAFICOS
+//================================
 // Esta es una herramienta (funcion) que creamos para dibujar una sola casilla, es como un link que cada vez que lo llamas hace esto
 void dibujarCasilla(int numeroDeCasilla, bool estaSeleccionada) {
-  // Calculamos en qué posición X va esta casilla en particular
+  //Calculamos en qué posición X va esta casilla en particular
   int x = Pxi + (numeroDeCasilla * tamanoCasilla);
   int y = Pyi;
   int grosorDelMarco = 4; 
@@ -145,14 +150,25 @@ void dibujarCasilla(int numeroDeCasilla, bool estaSeleccionada) {
   // Dibujamos el cuadrado base y los bordes para que tenga efecto 3D
   pantalla.fillRect(x, y, tamanoCasilla, tamanoCasilla, COLOR_CASILLA);
   pantalla.fillRect(x, y, tamanoCasilla, grosorDelMarco, COLOR_SOMBRA);       
-  pantalla.fillRect(x, y, grosorDelMarco, tamanoCasilla, COLOR_SOMBRA);       
+  pantalla.fillRect(x, y, grosorDelMarco, tamanoCasilla, COLOR_SOMBRA);  //:3     
   pantalla.fillRect(x, y + tamanoCasilla - grosorDelMarco, tamanoCasilla, grosorDelMarco, COLOR_BORDE); 
   pantalla.fillRect(x + tamanoCasilla - grosorDelMarco, y, grosorDelMarco, tamanoCasilla, COLOR_BORDE); 
 
-  // Si esta casilla está seleccionada, le dibujamos un marco extra de color blanco brillante
+  //Si esta casilla está seleccionada, le dibujamos un marco extra de color blanco brillante
   if (estaSeleccionada) {
     for (int grosor = 0; grosor < (grosorDelMarco + 1); grosor++) { 
       pantalla.drawRect(x + grosor, y + grosor, tamanoCasilla - (grosor*2), tamanoCasilla - (grosor*2), COLOR_SELECCION);
     }
   }
+}
+
+void mostrar_espada(void) {
+    // 2. Crear un objeto de imagen en la pantalla actual
+    lv_obj_t * img_espada = lv_img_create(lv_scr_act());
+
+    // 3. Asignar la textura convertida al objeto
+    lv_img_set_src(img_espada, &minecraft_diamond_sword);
+
+    // 4. Alinear la imagen en el centro de la pantalla
+    lv_obj_center(img_espada);
 }
